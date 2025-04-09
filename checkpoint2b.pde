@@ -1,6 +1,7 @@
 //Mar 29
 //Alice Wang
 
+PImage buttonImg;
 //palette
 color red1 = color(250, 139, 53);
 color red2 = color(255, 99, 71);
@@ -24,22 +25,26 @@ boolean wasPressed;
 
 void setup() {
   size(600, 600);
-   
-  myButtons = new Button[4];
   
+  buttonImg = loadImage("Gold Text Effect copy.png");
+  if (buttonImg == null) {
+  println("Button image is null!");
+}
+
+  myButtons = new Button[4];
+
   myButtons[0] = new Button("Red", 150, 100, 200, 150, red2, red1);
   myButtons[1] = new Button("Blue", 125, 375, 150, 375, blue2, blue1);
   myButtons[2] = new Button("Green", 400, 490, 350, 200, green2, green1);
-  myButtons[3] = new Button("Gold", 450, 200, 350, 350, gold2, gold1);
-  
+  myButtons[3] = new Button(buttonImg, 450, 200, 350, 350, gold2, gold1);
 }
 
 void draw() {
-  
+
   click();
-  
+
   rectMode(CENTER);
-  
+
   background(background);
   for (int i = 0; i < 4; i++) {
     myButtons[i].show();
@@ -47,5 +52,4 @@ void draw() {
       background = myButtons[i].normal;
     }
   }
-  
 }
